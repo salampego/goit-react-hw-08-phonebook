@@ -25,11 +25,11 @@ export default function LoginForm() {
   const handleSubmit = e => {
     e.preventDefault();
     dispatch(login({ email, password }));
-    setEmail('');
-    setPassword('');
     if (isLoggedIn) {
       Notiflix.Notify.success(`Welcome back`);
     }
+    setEmail('');
+    setPassword('');
   };
 
   return (

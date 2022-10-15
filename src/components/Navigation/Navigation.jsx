@@ -4,9 +4,10 @@ import { selectIsLoggedIn } from 'redux/selectors';
 import styled from 'styled-components';
 import s from '../Navigation/Navigation.module.css';
 import { UserMenu } from 'components/UserMenu/UserMenu';
+import { AuthNav } from 'components/AuthNav/AuthNav';
 export const Navigation = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
-
+  console.log(isLoggedIn);
   const StyledLink = styled(NavLink)`
     text-decoration: none;
     color: black;
@@ -18,8 +19,8 @@ export const Navigation = () => {
   return (
     <>
       <header className={s.header}>
-        <nav>
-          <div className={s.container}>
+        <div className={s.container}>
+          <nav>
             <div className={s.login}>
               {isLoggedIn && (
                 <StyledLink className={s.link} to="/contacts">
@@ -30,22 +31,11 @@ export const Navigation = () => {
                 Home
               </StyledLink>
             </div>
-            <div className={s.login}>
-              {isLoggedIn ? (
-                <UserMenu />
-              ) : (
-                <>
-                  <StyledLink className={s.link} to="/register">
-                    Register
-                  </StyledLink>
-                  <StyledLink className={s.link} to="/login">
-                    Login
-                  </StyledLink>
-                </>
-              )}
-            </div>
+          </nav>
+          <div className={s.login}>
+            {isLoggedIn ? <UserMenu /> : <AuthNav />}
           </div>
-        </nav>
+        </div>
       </header>
       <Outlet />
     </>
