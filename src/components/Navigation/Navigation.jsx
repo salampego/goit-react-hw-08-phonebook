@@ -18,32 +18,34 @@ export const Navigation = () => {
   return (
     <>
       <header className={s.header}>
-        <div className={s.container}>
-          <div className={s.login}>
-            {isLoggedIn && (
-              <StyledLink className={s.link} to="/contacts">
-                Contacts
+        <nav>
+          <div className={s.container}>
+            <div className={s.login}>
+              {isLoggedIn && (
+                <StyledLink className={s.link} to="/contacts">
+                  Contacts
+                </StyledLink>
+              )}
+              <StyledLink className={s.link} to="/" end>
+                Home
               </StyledLink>
-            )}
-            <StyledLink className={s.link} to="/" end>
-              Home
-            </StyledLink>
+            </div>
+            <div className={s.login}>
+              {isLoggedIn ? (
+                <UserMenu />
+              ) : (
+                <>
+                  <StyledLink className={s.link} to="/register">
+                    Register
+                  </StyledLink>
+                  <StyledLink className={s.link} to="/login">
+                    Login
+                  </StyledLink>
+                </>
+              )}
+            </div>
           </div>
-          <div className={s.login}>
-            {isLoggedIn ? (
-              <UserMenu />
-            ) : (
-              <>
-                <StyledLink className={s.link} to="/register">
-                  Register
-                </StyledLink>
-                <StyledLink className={s.link} to="/login">
-                  Login
-                </StyledLink>
-              </>
-            )}
-          </div>
-        </div>
+        </nav>
       </header>
       <Outlet />
     </>
