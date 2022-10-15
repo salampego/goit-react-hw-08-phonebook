@@ -1,11 +1,13 @@
 import Notiflix from 'notiflix';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { login } from 'redux/auth/operations';
+import { selectIsLoggedIn } from 'redux/selectors';
 
 import s from './LoginForm.module.css';
 export default function LoginForm() {
   const dispatch = useDispatch();
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -25,7 +27,9 @@ export default function LoginForm() {
     dispatch(login({ email, password }));
     setEmail('');
     setPassword('');
-    Notiflix.Notify.success(`Welcome back`);
+    if (isLoggedIn) {
+      Notiflix.Notify.success(`Welcome back`);
+    }
   };
 
   return (
