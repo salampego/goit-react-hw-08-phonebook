@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import s from '../Navigation/Navigation.module.css';
 import { UserMenu } from 'components/UserMenu/UserMenu';
 import { AuthNav } from 'components/AuthNav/AuthNav';
+import { Suspense } from 'react';
 export const Navigation = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   console.log(isLoggedIn);
@@ -38,7 +39,9 @@ export const Navigation = () => {
           </div>
         </div>
       </header>
-      <Outlet />
+      <Suspense fallback={<b>Downloading page</b>}>
+        <Outlet />
+      </Suspense>
     </>
   );
 };

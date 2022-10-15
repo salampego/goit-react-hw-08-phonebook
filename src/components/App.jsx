@@ -1,7 +1,7 @@
 import { Suspense, useEffect } from 'react';
 import { lazy } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Switch, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { fetchCurrentUser } from 'redux/auth/operations';
 import { fetchContacts } from 'redux/contacts/operationsContact';
 import { selectIsRefreshing } from 'redux/selectors';
