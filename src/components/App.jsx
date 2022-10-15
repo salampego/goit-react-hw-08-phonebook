@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import { lazy } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Route, Routes } from 'react-router-dom';
+import { Switch, Route, Routes } from 'react-router-dom';
 import { fetchCurrentUser } from 'redux/auth/operations';
 import { fetchContacts } from 'redux/contacts/operationsContact';
 import { selectIsRefreshing } from 'redux/selectors';
@@ -26,28 +26,33 @@ export const App = () => {
   return isRefreshing ? (
     <b>Refreshing user...</b>
   ) : (
-    <Routes>
-      <Route path="/" element={<Home />}>
-        <Route index element={<WelcomePage />} />
-        <Route
-          path="login"
-          element={
-            <RestrictedRoute redirectTo="/contacts" component={<Login />} />
-          }
-        />
-        <Route
-          path="register"
-          element={
-            <RestrictedRoute redirectTo="/contacts" component={<Register />} />
-          }
-        />
-        <Route
-          path="/contacts"
-          element={
-            <PrivateRoute redirectTo="/register" component={<Contacts />} />
-          }
-        />
-      </Route>
-    </Routes>
+    <Suspense fallback="">
+      <Routes>
+        <Route path="/" element={<Home />}>
+          <Route index element={<WelcomePage />} />
+          <Route
+            path="login"
+            element={
+              <RestrictedRoute redirectTo="/contacts" component={<Login />} />
+            }
+          />
+          <Route
+            path="register"
+            element={
+              <RestrictedRoute
+                redirectTo="/contacts"
+                component={<Register />}
+              />
+            }
+          />
+          <Route
+            path="/contacts"
+            element={
+              <PrivateRoute redirectTo="/register" component={<Contacts />} />
+            }
+          />
+        </Route>
+      </Routes>
+    </Suspense>
   );
 };

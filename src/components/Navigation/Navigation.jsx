@@ -8,6 +8,7 @@ import { AuthNav } from 'components/AuthNav/AuthNav';
 export const Navigation = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   console.log(isLoggedIn);
+
   const StyledLink = styled(NavLink)`
     text-decoration: none;
     color: black;
