@@ -1,16 +1,23 @@
-.list-contact {
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.item-contact {
+  margin-right: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   border: 1px solid #d4d4d4;
-  width: 300px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  min-width: 30%;
+  height: 100px;
+  padding: 5px;
   list-style: none;
   margin-top: 15px;
 }
-.list-contact:first-child {
-  margin-top: 0;
+
+.contactTitle {
+  margin: 0;
 }
 .btn-delete {
   margin-left: 5px;

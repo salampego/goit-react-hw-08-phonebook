@@ -14,11 +14,13 @@ export const ContactList = () => {
   );
 
   return (
-    <ul>
+    <ul className={s.list}>
       {visibleContact.map(({ id, name, number }) => {
         return (
-          <li key={id} className={s['list-contact']}>
-            {name} : {number}
+          <li key={id} className={s['item-contact']}>
+            <p className={s.contactTitle}>
+              {name} : {number}
+            </p>
             <button
               type="button"
               onClick={() => dispatch(deleteContact(id))}
