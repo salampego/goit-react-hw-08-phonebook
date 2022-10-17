@@ -8,7 +8,6 @@ import { AuthNav } from 'components/AuthNav/AuthNav';
 import { Suspense } from 'react';
 export const Navigation = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  console.log(isLoggedIn);
 
   const StyledLink = styled(NavLink)`
     text-decoration: none;
