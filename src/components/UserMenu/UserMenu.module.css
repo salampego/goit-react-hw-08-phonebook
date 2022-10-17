@@ -18,7 +18,7 @@
   transition: all 0.2s;
 }
 .btnLogout:hover {
-  border-color: rgba(0, 0, 0, 1);
+  border-color: #d1aa83;
 }
 @media all and (max-width: 30em) {
   .btnLogout {
