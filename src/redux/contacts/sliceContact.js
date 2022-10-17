@@ -41,12 +41,13 @@ export const contacts = createSlice({
       state.contacts.error = null;
       state.contacts.items.push(payload);
     },
-    [deleteContact.fulfilled](state, { payload }) {
+    [deleteContact.fulfilled](state, action) {
       state.contacts.error = null;
-      state.contacts.items = state.contacts.items.filter(
-        item => item.id !== payload.id
-      );
+      state.contacts.items = state.contacts.items.filter(item => {
+        return item.id !== action.meta.arg;
+      });
       state.contacts.isLoading = false;
+      fetchContacts();
     },
   },
 });
